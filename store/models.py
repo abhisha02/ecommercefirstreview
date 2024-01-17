@@ -45,3 +45,7 @@ class Variation(models.Model):
 
   def __str__(self):
     return self.variation_value
+  
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    addimage=models.ImageField(upload_to='photos/products')

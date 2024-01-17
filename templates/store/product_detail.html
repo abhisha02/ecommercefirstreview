@@ -1,6 +1,22 @@
 {% extends 'base.html'%}
  {% load static %}
 {% block content %}
+<style>
+  /* Your custom styles */
+.slider {
+    width: 80%;
+    margin: auto;
+}
+
+.slick-prev, .slick-next {
+    font-size: 24px;
+    color: #000;
+}
+
+.slick-prev:hover, .slick-next:hover {
+    color: #333;
+}
+</style>
 <section class="section-content padding-y bg">
   <div class="container">
   
@@ -9,10 +25,12 @@
     <div class="row no-gutters">
       <aside class="col-md-6">
   <article class="gallery-wrap"> 
-    <div class="img-big-wrap">
-       <a href="#"><img src="{{ single_product.image.url}}"></a>
-    </div> <!-- img-big-wrap.// -->
-    
+    <div class="slider ">
+      <img src="{{ single_product.image.url }}" alt="{{ product.name }} Image">
+      {% for image in additional_images %}
+          <img src="{{ image.addimage.url }}" alt="{{ product.name }} Image">
+      {% endfor %}
+     </div>
   </article> <!-- gallery-wrap .end// -->
       </aside>
       <main class="col-md-6 border-left">
@@ -111,6 +129,20 @@
   
   </div> <!-- container .//  -->
   </section>
+  <script>
+    $(document).ready(function(){
+        $('.slider').slick({
+            dots: true,
+            infinite: true,
+            speed: 500,
+            fade: true,
+            cssEase: 'linear'
+        });
+    });
+</script>
   <!-- ========================= SECTION CONTENT END// ========================= -->
+<!-- Add these scripts to the end of the body section of your HTML template -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 {% endblock %}

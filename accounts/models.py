@@ -62,13 +62,14 @@ class Account(AbstractBaseUser):
   username = models.CharField(max_length=50)
   email=models.EmailField(max_length=100,unique=True)
   phone_number=models.CharField(max_length=50)
+  profile_pic=models.ImageField(upload_to='photos/products',blank=True,default="")
   
   #required
   date_joined=models.DateTimeField(auto_now_add=True)
   last_login=models.DateTimeField(auto_now_add=True)
   is_admin=models.BooleanField(default=False)
   is_staff=models.BooleanField(default=False)
-  is_active=models.BooleanField(default=False)
+  is_active=models.BooleanField(default=True)
   is_superadmin=models.BooleanField(default=False)
 
   USERNAME_FIELD='email'
@@ -85,6 +86,8 @@ class Account(AbstractBaseUser):
   
   def has_module_perms(self,add_label):
     return True
+  class Meta:
+        ordering = ['-date_joined']
   
 
 class AccountUser(AbstractBaseUser):
@@ -118,3 +121,4 @@ class Profile(models.Model):
   
     otp = models.CharField(max_length=100, null=True, blank=True)
     uid = models.CharField(default=f'{uuid.uuid4}',max_length=200)
+

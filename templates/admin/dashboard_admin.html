@@ -1,0 +1,28 @@
+{% extends 'admin/base_admin.html' %}
+{% load static %}
+
+{% block content %}
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten padding-y bg">
+	<div class="container">
+		<div class="row">
+			<aside class="col-md-2">
+				<!--   SIDEBAR   -->
+				<ul class="list-group" style="list-style-type: none;">
+					<li><label class="list-group-item text-center bg-info">Dashboard</label></li>
+					<li><a class="list-group-item" href="{% url 'category_list'%}"> Categories </a></li>
+					<li><a class="list-group-item" href="{% url 'product_list'%}"> Products </a></li>
+					<li><a class="list-group-item" href="{% url 'variant_list'%}"> Variants </a></li>
+					<li><a class="list-group-item" href="#"> Orders </a></li>
+					<li><a class="list-group-item" href="{% url 'users_list'%}"> Users </a></li>
+					<li><a class="list-group-item" href="#"> Profile </a></li>
+					<li><a class="btn btn-light btn-block" href="{% url 'logout'%}"> <i class="fa fa-power-off"></i> <span
+						class="text">Log out</span> </a></li>
+				</ul>
+				<!--   SIDEBAR .//END   -->
+			</aside>
+		</div> <!-- row.// -->
+	</div>
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock %}
